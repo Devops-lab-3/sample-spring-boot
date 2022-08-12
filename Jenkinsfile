@@ -3,7 +3,6 @@ pipeline {
     environment {
         ENV_DOCKER = credentials('dockerhub')
         DOCKERIMAGE = "sample-spring-boot"
-        ENV_AWS = credentials('aws-credentials')
         SONAR_TOKEN = credentials('sonar-token')
         image = ''
     }
