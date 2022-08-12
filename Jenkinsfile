@@ -60,7 +60,7 @@ pipeline {
             steps {
                 echo 'Deploying to kubernetes'
 
-                withAWS("$ENV_AWS") {
+                withAWS(credentials:'aws-credentials') {
                     sh 'aws eks update-kubeconfig --name sre-primer'
                     sh 'chmod +x deployment-status.sh && ./deployment-status.sh'
                     sh "kubectl set image deployment sample-spring-boot -n zeru-yang springboot-sample=$ENV_DOCKER_USR/$DOCKERIMAGE:$BUILD_ID"
